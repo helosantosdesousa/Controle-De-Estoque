@@ -6,14 +6,6 @@ private String cpf;
 private int idCliente;
 
 
-public Cliente(String nome, String cpf, int idCliente) {
-	super();
-	this.nome = nome;
-	this.cpf = cpf;
-	this.idCliente = idCliente;
-}
-
-
 public String getNome() {
 	return nome;
 }
