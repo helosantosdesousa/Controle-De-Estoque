@@ -25,11 +25,17 @@ public class AutenticarServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		Usuario usuario = new UsuarioDAO().autenticar(email, senha);
-		System.out.println(usuario);
+		System.out.println(usuario.getIdUsuario());
 		if(usuario != null && "admin".equalsIgnoreCase(usuario.getPerfil().getPerfil())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("nome", usuario.getNome());
 			response.sendRedirect("admin/dashboard.jsp");
+		}
+		
+		if(usuario!=null && "user".equalsIgnoreCase(usuario.getPerfil().getPerfil())) {
+			HttpSession session = request.getSession();
+			session.setAttribute("nome", usuario.getNome());
+			response.sendRedirect("usuario/dashboard.jsp");
 		}
 	}
 
